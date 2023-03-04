@@ -21,7 +21,7 @@ def clear_submit():
 def set_openai_api_key(api_key: str):
     st.session_state["OPENAI_API_KEY"] = api_key
 
-st.markdown('<h1>File GPT 🤖<small> by <a href="https://codegpt.co">Code GPT</a></small></h1>', unsafe_allow_html=True)
+st.markdown('<h1>File GPT </h1>', unsafe_allow_html=True)
 
 # Sidebar
 index = None
@@ -64,6 +64,9 @@ with st.sidebar:
         except OpenAIError as e:
             st.error(e._message)
 
+    tab1, tab2 = st.tabs(["Chat with the File", "About the Application"])
+
+   with tab1: 
     st.write('To obtain an API Key you must create an OpenAI account at the following link: https://openai.com/api/')
     if 'generated' not in st.session_state:
         st.session_state['generated'] = []
@@ -95,3 +98,6 @@ with st.sidebar:
                 for i in range(len(st.session_state['generated'])-1, -1, -1):
                     message(st.session_state["generated"][i], key=str(i))
                     message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+
+with tab2:
+    st.write('Developed by </Shahnab>')
