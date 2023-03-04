@@ -64,13 +64,6 @@ with st.sidebar:
         except OpenAIError as e:
             st.error(e._message)
 
-tab1, tab2 = st.tabs(["Chat with the File"])
-with tab1:
-    st.markdown("### How does it work?")
-    
-    
-
-with tab2:
     st.write('To obtain an API Key you must create an OpenAI account at the following link: https://openai.com/api/')
     if 'generated' not in st.session_state:
         st.session_state['generated'] = []
