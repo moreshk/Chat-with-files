@@ -6,7 +6,6 @@ from utils import (
     parse_pdf,
     parse_txt,
     parse_csv,
-    parse_pptx,
     search_docs,
     embed_docs,
     text_to_docs,
@@ -22,7 +21,7 @@ def clear_submit():
 def set_openai_api_key(api_key: str):
     st.session_state["OPENAI_API_KEY"] = api_key
 
-st.markdown('<h1>File GPT </h1>', unsafe_allow_html=True)
+st.markdown('<h1>File GPT 🤖<small> by <a href="https://codegpt.co">Code GPT</a></small></h1>', unsafe_allow_html=True)
 
 # Sidebar
 index = None
@@ -40,7 +39,7 @@ with st.sidebar:
 
     uploaded_file = st.file_uploader(
         "Upload a pdf, docx, or txt file",
-        type=["pdf", "docx", "txt", "csv", "pptx"],
+        type=["pdf", "docx", "txt", "csv"],
         help="Scanned documents are not supported yet!",
         on_change=clear_submit,
     )
@@ -54,13 +53,10 @@ with st.sidebar:
             doc = parse_csv(uploaded_file)
         elif uploaded_file.name.endswith(".txt"):
             doc = parse_txt(uploaded_file)
-        elif uploaded_file.name.endswith(".pptx"):
-            doc = parse_pptx(uploaded_file)
         else:
             st.error("File type not supported")
             doc = None
         text = text_to_docs(doc)
-        st.write(text)
         try:
             with st.spinner("Indexing document... This may take a while⏳"):
                 index = embed_docs(text)
@@ -68,9 +64,25 @@ with st.sidebar:
         except OpenAIError as e:
             st.error(e._message)
 
-tab1 = st.tabs(["Chat with the File"])
-
+tab1, tab2 = st.tabs(["Intro", "Chat with the File"])
 with tab1:
+    st.markdown("### How does it work?")
+    st.markdown('Read the article to know how it works: [Medium Article]("https://medium.com/@dan.avila7")')
+    st.write("File GPT was written with the following tools:")
+    st.markdown("#### Code GPT")
+    st.write("All code was written with the help of Code GPT. Visit [codegpt.co]('https://codegpt.co') to get the extension.")
+    st.markdown("#### Streamlit")
+    st.write("The design was written with [Streamlit]('https://streamlit.io/').")
+    st.markdown("#### LangChain")
+    st.write("Question answering with source [Langchain QA]('https://langchain.readthedocs.io/en/latest/use_cases/question_answering.html#adding-in-sources').")
+    st.markdown("#### Embedding")
+    st.write('[Embedding]("https://platform.openai.com/docs/guides/embeddings") is done via the OpenAI API with "text-embedding-ada-002"')
+    st.markdown("""---""")
+    st.write('Author: [Daniel Ávila](https://www.linkedin.com/in/daniel-avila-arias/)')
+    st.write('Repo: [Github](https://github.com/davila7/file-gpt)')
+    st.write("This software was developed with Code GPT, for more information visit: https://codegpt.co")
+
+with tab2:
     st.write('To obtain an API Key you must create an OpenAI account at the following link: https://openai.com/api/')
     if 'generated' not in st.session_state:
         st.session_state['generated'] = []
