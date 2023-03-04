@@ -22,7 +22,7 @@ def set_openai_api_key(api_key: str):
     st.session_state["OPENAI_API_KEY"] = api_key
 
 st.markdown('<h1>Chat with your Files </h1>', unsafe_allow_html=True)
-st.markdown('<h1>Developed with LangChain and OpenAI Embeddings </h1>', unsafe_allow_html=True)
+st.markdown('<h3>Developed with LangChain and OpenAI Embeddings </h3>', unsafe_allow_html=True)
 
 # Sidebar
 index = None
@@ -67,7 +67,7 @@ with st.sidebar:
 
 tab1, tab2 = st.tabs(["Chat with the File", "About the Application"])
 with tab1:
-    st.write('To obtain an API Key you must create an OpenAI account at the following link: https://openai.com/api/')
+    # st.write('To obtain an API Key you must create an OpenAI account at the following link: https://openai.com/api/')
     if 'generated' not in st.session_state:
         st.session_state['generated'] = []
 
