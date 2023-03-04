@@ -21,7 +21,8 @@ def clear_submit():
 def set_openai_api_key(api_key: str):
     st.session_state["OPENAI_API_KEY"] = api_key
 
-st.markdown('<h1>File GPT </h1>', unsafe_allow_html=True)
+st.markdown('<h1>Chat with your Files </h1>', unsafe_allow_html=True)
+st.markdown('<h1>Developed with LangChain and OpenAI Embeddings </h1>', unsafe_allow_html=True)
 
 # Sidebar
 index = None
