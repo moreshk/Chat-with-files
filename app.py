@@ -64,23 +64,11 @@ with st.sidebar:
         except OpenAIError as e:
             st.error(e._message)
 
-tab1, tab2 = st.tabs(["Intro", "Chat with the File"])
+tab1, tab2 = st.tabs(["Chat with the File"])
 with tab1:
     st.markdown("### How does it work?")
-    st.markdown('Read the article to know how it works: [Medium Article]("https://medium.com/@dan.avila7")')
-    st.write("File GPT was written with the following tools:")
-    st.markdown("#### Code GPT")
-    st.write("All code was written with the help of Code GPT. Visit [codegpt.co]('https://codegpt.co') to get the extension.")
-    st.markdown("#### Streamlit")
-    st.write("The design was written with [Streamlit]('https://streamlit.io/').")
-    st.markdown("#### LangChain")
-    st.write("Question answering with source [Langchain QA]('https://langchain.readthedocs.io/en/latest/use_cases/question_answering.html#adding-in-sources').")
-    st.markdown("#### Embedding")
-    st.write('[Embedding]("https://platform.openai.com/docs/guides/embeddings") is done via the OpenAI API with "text-embedding-ada-002"')
-    st.markdown("""---""")
-    st.write('Author: [Daniel Ávila](https://www.linkedin.com/in/daniel-avila-arias/)')
-    st.write('Repo: [Github](https://github.com/davila7/file-gpt)')
-    st.write("This software was developed with Code GPT, for more information visit: https://codegpt.co")
+    
+    
 
 with tab2:
     st.write('To obtain an API Key you must create an OpenAI account at the following link: https://openai.com/api/')
