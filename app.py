@@ -100,4 +100,10 @@ with tab1:
                     message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
 
 with tab2:
-    st.write('Developed by </Shahnab>')
+    st.write('About the Application')
+    st.write('Chat with Files enables user to extract all the information from a file. User can obtain the transcription, the embedding of each segment and also ask questions to the file through a chat.')
+    st.write('Features include- ')
+    st.write('1. Reading any pdf, docx, txt or csv file')
+    st.write('2. Embedding texts segments with Langchain and OpenAI')
+    st.write('3. Chatting with the file using streamlit-chat and LangChain QA with source and GPT model')
+    
