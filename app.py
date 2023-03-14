@@ -40,7 +40,7 @@ with st.sidebar:
 
     uploaded_file = st.file_uploader(
         "Upload a pdf, docx, or txt file",
-        type=["pdf", "docx", "txt", "csv"],
+        type=["pdf", "docx", "txt", "csv", "pptx", "js", "py", "json", "html", "css", "md"],
         help="Scanned documents are not supported yet!",
         on_change=clear_submit,
     )
@@ -55,11 +55,13 @@ with st.sidebar:
         elif uploaded_file.name.endswith(".txt"):
             doc = parse_txt(uploaded_file)
         else:
-            st.error("File type not supported")
-            doc = None
+            doc = parse_any(uploaded_file)
+            # st.error("File type not supported")
+            # doc = None
         text = text_to_docs(doc)
+        st.write(text)
         try:
-            with st.spinner("Indexing document... This may take a while⏳"):
+            with st.spinner("Indexing document..."):
                 index = embed_docs(text)
                 st.session_state["api_key_configured"] = True
         except OpenAIError as e:
